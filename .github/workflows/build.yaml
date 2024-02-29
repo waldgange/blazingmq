@@ -141,7 +141,7 @@ jobs:
       - name: List GTest files
         run: brew ls -v googletest
       - name: Cat Gmock package
-        run: cat /opt/homebrew/Cellar/googletest/1.14.0/lib/pkgconfig/gtest.pc
+        run: cat /opt/homebrew/Cellar/googletest/1.14.0/lib/pkgconfig/gmock.pc
       - name: Build BlazingMQ
         run: bin/build-darwin.sh
 
