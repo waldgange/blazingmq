@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - search-processor
   pull_request:
     branches:
       - main
@@ -136,6 +137,8 @@ jobs:
             googletest
           python3 -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/src/python/requirements.txt
+      - name: List GTest files
+        run: brew ls -v googletest
       - name: Build BlazingMQ
         run: bin/build-darwin.sh
 
