@@ -109,13 +109,20 @@ CMAKE_OPTIONS=(\
     -DFLEX_ROOT="${FLEX_ROOT}")
 
 ##############
-PKG_CONFIG_PATH_1="${DIR_INSTALL}/lib/pkgconfig:${BREW_PKG_CONFIG_PATH}"
-echo PKG_CONFIG_PATH_1 $PKG_CONFIG_PATH_1
+PKG_CONFIG_PATH="${DIR_INSTALL}/lib/pkgconfig:${BREW_PKG_CONFIG_PATH}"
+echo PKG_CONFIG_PATH $PKG_CONFIG_PATH
+pkg-config --variable pc_path pkg-config
 ##############
 
 PKG_CONFIG_PATH="${DIR_INSTALL}/lib/pkgconfig:${BREW_PKG_CONFIG_PATH}" \
 cmake -B "${DIR_BUILD}/blazingmq" -S "${DIR_ROOT}" "${CMAKE_OPTIONS[@]}"
-make -C "${DIR_BUILD}/blazingmq" -j 16
+
+##############
+echo CAT link.txt
+cat ${DIR_BUILD}/blazingmq/src/applications/bmqstoragetool/CMakeFiles/m_bmqstoragetool_journalfileprocessor.t.dir/link.txt
+##############
+
+# make -C "${DIR_BUILD}/blazingmq" -j 16
 
 echo broker is here: "${DIR_BUILD}/blazingmq/src/applications/bmqbrkr/bmqbrkr.tsk"
 echo to run the broker: "${DIR_BUILD}/blazingmq/src/applications/bmqbrkr/run"
