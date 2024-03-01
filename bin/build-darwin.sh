@@ -122,7 +122,7 @@ echo CAT link.txt
 cat ${DIR_BUILD}/blazingmq/src/applications/bmqstoragetool/CMakeFiles/m_bmqstoragetool_journalfileprocessor.t.dir/link.txt
 ##############
 
-# make -C "${DIR_BUILD}/blazingmq" -j 16
+make -C "${DIR_BUILD}/blazingmq" -j 16
 
 echo broker is here: "${DIR_BUILD}/blazingmq/src/applications/bmqbrkr/bmqbrkr.tsk"
 echo to run the broker: "${DIR_BUILD}/blazingmq/src/applications/bmqbrkr/run"
