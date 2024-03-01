@@ -139,7 +139,7 @@ jobs:
             pkg-config
           python3 -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/src/python/requirements.txt
-      - name: List GTest files
+      - name: List googletest files
         run: brew ls -v googletest
       - name: Cat Gmock package
         run: cat /opt/homebrew/Cellar/googletest/1.14.0/lib/pkgconfig/gmock.pc

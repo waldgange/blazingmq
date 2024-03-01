@@ -87,7 +87,8 @@ brew install flex bison google-benchmark googletest zlib
 
 # Determine paths based on Intel vs Apple Silicon CPU
 if [ "$(uname -p)" == 'arm' ]; then
-    BREW_PKG_CONFIG_PATH="/opt/homebrew/Cellar/googletest/1.14.0/lib/pkgconfig:/opt/homebrew/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig"
+    # BREW_PKG_CONFIG_PATH="/opt/homebrew/Cellar/googletest/1.14.0/lib/pkgconfig:/opt/homebrew/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig"
+    BREW_PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig"
     FLEX_ROOT="/opt/homebrew/opt/flex"
 else
     BREW_PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/opt/zlib/lib/pkgconfig"
@@ -109,17 +110,17 @@ CMAKE_OPTIONS=(\
     -DFLEX_ROOT="${FLEX_ROOT}")
 
 ##############
-PKG_CONFIG_PATH="${DIR_INSTALL}/lib/pkgconfig:${BREW_PKG_CONFIG_PATH}"
-echo PKG_CONFIG_PATH $PKG_CONFIG_PATH
-pkg-config --variable pc_path pkg-config
+# PKG_CONFIG_PATH="${DIR_INSTALL}/lib/pkgconfig:${BREW_PKG_CONFIG_PATH}"
+# echo PKG_CONFIG_PATH $PKG_CONFIG_PATH
+# pkg-config --variable pc_path pkg-config
 ##############
 
 PKG_CONFIG_PATH="${DIR_INSTALL}/lib/pkgconfig:${BREW_PKG_CONFIG_PATH}" \
 cmake -B "${DIR_BUILD}/blazingmq" -S "${DIR_ROOT}" "${CMAKE_OPTIONS[@]}"
 
 ##############
-echo CAT link.txt
-cat ${DIR_BUILD}/blazingmq/src/applications/bmqstoragetool/CMakeFiles/m_bmqstoragetool_journalfileprocessor.t.dir/link.txt
+# echo CAT link.txt
+# cat ${DIR_BUILD}/blazingmq/src/applications/bmqstoragetool/CMakeFiles/m_bmqstoragetool_journalfileprocessor.t.dir/link.txt
 ##############
 
 make -C "${DIR_BUILD}/blazingmq" -j 16
