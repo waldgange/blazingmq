@@ -137,12 +137,12 @@ jobs:
             google-benchmark
           python3 -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/src/python/requirements.txt
-      - name: List googletest files
-        run: brew ls -v googletest
-      - name: Cat Gmock package
-        run: cat /opt/homebrew/Cellar/googletest/1.14.0/lib/pkgconfig/gmock.pc
-      - name: "Show PKG_CONFIG_PATH"
-        run: pkg-config --variable pc_path pkg-config
+      # - name: List googletest files
+      #   run: brew ls -v googletest
+      # - name: Cat Gmock package
+      #   run: cat /opt/homebrew/Cellar/googletest/1.14.0/lib/pkgconfig/gmock.pc
+      # - name: "Show PKG_CONFIG_PATH"
+      #   run: pkg-config --variable pc_path pkg-config
       - name: Build BlazingMQ
         run: bin/build-darwin.sh
 
