@@ -57,7 +57,7 @@ class TestConfirmsBuffering:
 
     def test_kill_primary_confirm_puts_close_app_start_primary(
         self,
-        multi_node: Cluster,
+        multi_node:  Cluster,
         domain_urls: tc.DomainUrls,  # pylint: disable=unused-argument
     ):
         du = domain_urls
