@@ -1,0 +1,13 @@
+coverage: true
+docker:
+  image: Dockerfile
+  tag: latest
+introspector: false
+language: c++
+name: blazingmq-mirror
+repos:
+- branch: upstream
+  org: BMQ
+  repo: blazingmq-mirror
+sanitizers:
+- address
