@@ -25,12 +25,11 @@ jobs:
           pip3 install -r ${{ github.workspace }}/src/python/requirements.txt
           pip3 install pylint lint-diffs
           ln -s ${{ github.workspace }}/src/python/pylintrc ${{ github.workspace }}/.pylintrc
-          echo [pylint] > ${{ github.workspace }}/.lint-diffs
-          echo extensions=.py >> ${{ github.workspace }}/.lint-diffs
-          echo [clang-tidy] >> ${{ github.workspace }}/.lint-diffs
-          echo extensions= >> ${{ github.workspace }}/.lint-diffs
-          echo [rubocop] >> ${{ github.workspace }}/.lint-diffs
-          echo extensions= >> ${{ github.workspace }}/.lint-diffs
+          echo -e "[pylint]\nextensions=.py" > ${{ github.workspace }}/.lint-diffs
+          for linter in flake8 rubocop eslint shellcheck clang-tidy
+          do
+            echo -e "[$linter]\nextensions=" >> ${{ github.workspace }}/.lint-diffs
+          done
       - name: Check the whole repo with pylint
         run: |
           export PYTHONPATH=${{ github.workspace }}/src/python:$PYTHONPATH
