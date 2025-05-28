@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libbmq<span id="projectnumber">&#160;763b0330fae6c9d97cd49a4d522d85dc22af7699</span>
+   <div id="projectname">libbmq<span id="projectnumber">&#160;f7cde15b272c7b455fc802cfae94cf0603813469</span>
    </div>
   </td>
  </tr>
@@ -236,6 +236,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Set the payload of this message to the specified <code>length</code> bytes starting at the specified <code>data</code> address. The behavior is undefined unless <code>data</code> is non-null and <code>length</code> is greater than zero. Note that payload pointed to by <code>data</code> is <em>not</em> copied right away, and should not be destroyed or modified until this message has been packed (see <code><a class="el" href="classBloombergLP_1_1bmqa_1_1MessageEventBuilder.html" title="A builder for MessageEvent objects.">bmqa::MessageEventBuilder</a></code> component level documentation for correct usage).</p>
+<p>This method is deprecated, please use <code><a class="el" href="classBloombergLP_1_1bmqa_1_1Message.html#ac8656c868bb0c69fa910c2905a4cddcd">setDataRef()</a></code> instead. </p>
 
 <p class="reference">References <a class="el" href="classBloombergLP_1_1bmqa_1_1Message.html#ac8656c868bb0c69fa910c2905a4cddcd">setDataRef()</a>.</p>
 
