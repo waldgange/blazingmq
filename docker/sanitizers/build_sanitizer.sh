@@ -24,11 +24,18 @@ set -eux
 # Check required arguments
 if [ -z "${1}" ]; then
     echo 'Error: Missing sanitizer name.' >&2
-    echo '  (Usage: build_sanitizer.sh <sanitizer-name>)' >&2
+    echo '  (Usage: build_sanitizer.sh <sanitizer-name> <fuzzer>)' >&2
+    exit 1
+fi
+
+if [[ -z "${2}" || ("${2}" != "on" && "${2}" != "off") ]]; then
+    echo 'Error: Wrong fuzzer argument. It can be either "on" or "off"' >&2
+    echo '  (Usage: build_sanitizer.sh <sanitizer-name> <fuzzer>)' >&2
     exit 1
 fi
 
 SANITIZER_NAME="${1}"
+FUZZER="${2}"
 
 # Install prerequisites
 # Set up CA certificates first before installing other dependencies
@@ -145,6 +152,7 @@ cmake   -B "${LIBCXX_BUILD_PATH}" \
         -DCMAKE_BUILD_TYPE="Debug" \
         -DCMAKE_C_COMPILER="clang" \
         -DCMAKE_CXX_COMPILER="clang++" \
+        -DCMAKE_CXX_STANDARD=20 \
         -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
         -DLLVM_USE_SANITIZER="${LLVM_SANITIZER_NAME}" \
         "${LLVM_SPECIFIC_CMAKE_OPTIONS}"
@@ -158,6 +166,7 @@ export DIR_SCRIPTS="${DIR_SCRIPTS}"
 
 TOOLCHAIN_PATH="${DIR_SCRIPTS}/clang-libcxx-sanitizer.cmake"
 export SANITIZER_NAME="${SANITIZER_NAME}"
+export FUZZER="${FUZZER}"
 export CC="clang"
 export CXX="clang++"
 export CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES="/usr/include;/usr/include/clang/${LLVM_VERSION}/include"
@@ -228,25 +237,42 @@ cmake --install "${DIR_SRCS_EXT}/google-benchmark/cmake.bld" --prefix "/opt/bb"
 # https://discourse.cmake.org/t/cmake-install-prefix-not-work/5040
 cmake -B "${DIR_SRCS_EXT}/zlib/cmake.bld" -S "${DIR_SRCS_EXT}/zlib" \
         -D CMAKE_INSTALL_PREFIX="/opt/bb" \
-        "${CMAKE_OPTIONS[@]}"
+        "${CMAKE_OPTIONS[@]}" \
+        -DZLIB_BUILD_TESTING=OFF \
+        -DZLIB_BUILD_SHARED=OFF \
+        -DZLIB_BUILD_STATIC=ON \
+        -DZLIB_BUILD_MINIZIP=OFF
 # Make and install zlib.
 cmake --build "${DIR_SRCS_EXT}/zlib/cmake.bld" -j${PARALLELISM}
 cmake --install "${DIR_SRCS_EXT}/zlib/cmake.bld"
 
 # Remove un-needed folders
 rm -rf "${DIR_BUILD_EXT}"
-rm -rf "${DIR_SRCS_EXT}/bde"
-rm -rf "${DIR_SRCS_EXT}/ntf-core"
+for dir in "${DIR_SRCS_EXT}"/*; do
+    [[ "$dir" == "${DIR_SRCS_EXT}/bde-tools" || "$dir" == "${DIR_SRCS_EXT}/llvm-project" ]] && continue
+    rm -rf "$dir"
+done
 
 # Build BlazingMQ
+if [ "${FUZZER}" == "on" ]; then
+    CMAKE_OPTIONS+=(-DINSTALL_TARGETS=fuzztests);
+    TARGETS="fuzztests"
+else
+    CMAKE_OPTIONS+=(-UINSTALL_TARGETS);
+    TARGETS="all.t"
+fi
 PKG_CONFIG_PATH="/opt/bb/lib64/pkgconfig:/opt/bb/lib/pkgconfig:/opt/bb/share/pkgconfig:$(pkg-config --variable pc_path pkg-config)" \
 cmake -B "${DIR_BUILD_BMQ}" -S "${DIR_SRC_BMQ}" -G Ninja \
     -DBDE_BUILD_TARGET_64=ON \
-    -DBDE_BUILD_TARGET_CPP17=ON \
+    -DBDE_BUILD_TARGET_CPP20=ON \
     -DCMAKE_PREFIX_PATH="${DIR_SRCS_EXT}/bde-tools/BdeBuildSystem" \
     -DBDE_BUILD_TARGET_SAFE=1 "${CMAKE_OPTIONS[@]}"
 cmake --build "${DIR_BUILD_BMQ}" -j${PARALLELISM} \
-      --target all.t -v --clean-first
+      --target ${TARGETS} -v --clean-first
+
+if [ "${FUZZER}" == "on" ]; then
+    exit 0
+fi
 
 # Create testing script
 envcfgquery() {
