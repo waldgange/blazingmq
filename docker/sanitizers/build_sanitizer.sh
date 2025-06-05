@@ -152,9 +152,10 @@ cmake   -B "${LIBCXX_BUILD_PATH}" \
         -DCMAKE_BUILD_TYPE="Debug" \
         -DCMAKE_C_COMPILER="clang" \
         -DCMAKE_CXX_COMPILER="clang++" \
-        -DCMAKE_CXX_STANDARD=20 \
+        -DCMAKE_CXX_STANDARD=17 \
         -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
         -DLLVM_USE_SANITIZER="${LLVM_SANITIZER_NAME}" \
+        -DLLVM_USE_SANITIZE_COVERAGE="${FUZZER}" \
         "${LLVM_SPECIFIC_CMAKE_OPTIONS}"
 
 cmake --build "${LIBCXX_BUILD_PATH}" -j${PARALLELISM} --target cxx cxxabi unwind generate-cxx-headers
@@ -176,7 +177,7 @@ export PATH
 
 # Build BDE + NTF
 pushd "${DIR_SRCS_EXT}/bde"
-eval "$(bbs_build_env -u dbg_64_safe_cpp20 -b "${DIR_BUILD_EXT}/bde")"
+eval "$(bbs_build_env -u dbg_64_safe_cpp17 -b "${DIR_BUILD_EXT}/bde")"
 bbs_build configure --toolchain "${TOOLCHAIN_PATH}"
 bbs_build build -j${PARALLELISM}
 bbs_build --install=/opt/bb --prefix=/ install
@@ -194,7 +195,7 @@ sed -i 's/fcoroutines-ts/fcoroutines/g' 'repository.cmake'
             --without-warnings-as-errors \
             --without-usage-examples \
             --without-applications \
-            --ufid 'dbg_64_safe_cpp20' \
+            --ufid 'dbg_64_safe_cpp17' \
             --toolchain "${TOOLCHAIN_PATH}"
 make -j${PARALLELISM}
 make install
@@ -264,7 +265,7 @@ fi
 PKG_CONFIG_PATH="/opt/bb/lib64/pkgconfig:/opt/bb/lib/pkgconfig:/opt/bb/share/pkgconfig:$(pkg-config --variable pc_path pkg-config)" \
 cmake -B "${DIR_BUILD_BMQ}" -S "${DIR_SRC_BMQ}" -G Ninja \
     -DBDE_BUILD_TARGET_64=ON \
-    -DBDE_BUILD_TARGET_CPP20=ON \
+    -DBDE_BUILD_TARGET_CPP17=ON \
     -DCMAKE_PREFIX_PATH="${DIR_SRCS_EXT}/bde-tools/BdeBuildSystem" \
     -DBDE_BUILD_TARGET_SAFE=1 "${CMAKE_OPTIONS[@]}"
 cmake --build "${DIR_BUILD_BMQ}" -j${PARALLELISM} \
