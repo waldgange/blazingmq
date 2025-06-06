@@ -11,21 +11,25 @@ add_custom_target("fuzztests")
 find_package(BdeBuildSystem REQUIRED)
 bbs_read_metadata(PACKAGE fuzz-tests)
 
+function(BMQ_ADD_FUZZER fileName)
+    get_filename_component(targetName "${fileName}" NAME_WE)
+    add_executable(${targetName} ${fileName})
+
+    target_bmq_default_compiler_flags(${targetName})
+    target_include_directories(${targetName} PRIVATE ${fuzz-tests_INCLUDE_DIRS})
+    target_link_libraries(${targetName} PRIVATE ${fuzz-tests_PCDEPS})
+    target_link_options(${targetName} PUBLIC "-fsanitize=fuzzer")
+
+    set_target_properties(${targetName}
+      PROPERTIES OUTPUT_NAME ${targetName})
+
+    # Add the current tutorial to the 'fuzztests' rule
+    add_dependencies("fuzztests" ${targetName})
+endfunction()
+
 file(GLOB sources "*fuzzer.cpp")
 foreach (source ${sources})
-  get_filename_component(targetName "${source}" NAME_WE)
-  add_executable(${targetName} ${source})
-
-  target_bmq_default_compiler_flags(${targetName})
-  target_include_directories(${targetName} PRIVATE ${fuzz-tests_INCLUDE_DIRS})
-  target_link_libraries(${targetName} PRIVATE ${fuzz-tests_PCDEPS})
-  target_link_options(${targetName} PUBLIC "-fsanitize=fuzzer")
-
-  set_target_properties(${targetName}
-    PROPERTIES OUTPUT_NAME ${targetName})
-
-  # Add the current tutorial to the 'fuzztests' rule
-  add_dependencies("fuzztests" ${targetName})
+    bmq_add_fuzzer(${source})
 endforeach()
 
 target_include_directories(eval_fuzzer

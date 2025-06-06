@@ -35,7 +35,7 @@ jobs:
           azure-cli microsoft-edge-stable google-cloud-cli \
           google-chrome-stable temurin-21-jdk temurin-17-jdk \
           temurin-11-jdk dotnet-sdk-8.0 firefox temurin-8-jdk \
-          powershell libllvm17t64 libllvm18 libllvm16t64 \
+          powershell \
           openjdk-21-jre-headless mysql-server-core-8.0
           sudo apt-get autoremove
           sudo apt-get autoclean
