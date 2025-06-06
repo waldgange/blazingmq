@@ -115,6 +115,10 @@ else()
   message(FATAL_ERROR "Unexpected sanitizer name: ${SANITIZER_NAME}")
 endif()
 
+if($ENV{FUZZER} STREQUAL "on")
+  string(APPEND TOOLCHAIN_DEBUG_FLAGS "-fsanitize=fuzzer-no-link ")
+endif()
+
 # Set the final configuration variables, as understood by CMake.
 set_build_type(DEBUG)
 
