@@ -125,8 +125,8 @@ else()
   message(FATAL_ERROR "Unexpected sanitizer name: ${SANITIZER_NAME}")
 endif()
 
-if(DEFINED ENV{FUZZER})
-  string(APPEND TOOLCHAIN_DEBUG_FLAGS "-fsanitize=$ENV{FUZZER} ")
+if(DEFINED ENV{FUZZER_FLAG})
+  string(APPEND TOOLCHAIN_DEBUG_FLAGS "-fsanitize=$ENV{FUZZER_FLAG} ")
 endif()
 
 # Set the final configuration variables, as understood by CMake.

@@ -35,7 +35,7 @@ if [[ -z "${2}" || ("${2}" != "on" && "${2}" != "off") ]]; then
 fi
 
 SANITIZER_NAME="${1}"
-FUZZER_ENABLED="${2}"
+FUZZER="${2}"
 
 # Install prerequisites
 # Set up CA certificates first before installing other dependencies
@@ -144,7 +144,7 @@ cd -
 #
 # We therefore opt to use libc++ here, just to ensure maximum flexibility.  We
 # follow build instructions from https://libcxx.llvm.org/BuildingLibcxx.html
-if [ "${FUZZER_ENABLED}" == "off" ]; then
+if [ "${FUZZER}" == "off" ]; then
     LIBCXX_SRC_PATH="${DIR_SRCS_EXT}/llvm-project/runtimes"
     LIBCXX_BUILD_PATH="${LIBCXX_SRC_PATH}/cmake.bld"
 
@@ -171,8 +171,8 @@ TOOLCHAIN_PATH="${DIR_SCRIPTS}/clang-libcxx-sanitizer.cmake"
 export SANITIZER_NAME="${SANITIZER_NAME}"
 export CC="clang"
 export CXX="clang++"
-if [ "${FUZZER_ENABLED}" == "on" ]; then
-  export FUZZER="fuzzer-no-link"
+if [ "${FUZZER}" == "on" ]; then
+  export FUZZER_FLAG="fuzzer-no-link"
 else
   export CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES="/usr/include;/usr/include/clang/${LLVM_VERSION}/include"
 fi
@@ -260,8 +260,8 @@ for dir in "${DIR_SRCS_EXT}"/*; do
 done
 
 # Build BlazingMQ
-if [ "${FUZZER_ENABLED}" == "on" ]; then
-    export FUZZER="fuzzer"
+if [ "${FUZZER}" == "on" ]; then
+    export FUZZER_FLAG="fuzzer"
     CMAKE_OPTIONS+=(-DINSTALL_TARGETS=fuzztests);
     TARGETS="fuzztests"
 else
@@ -277,7 +277,7 @@ cmake -B "${DIR_BUILD_BMQ}" -S "${DIR_SRC_BMQ}" -G Ninja \
 cmake --build "${DIR_BUILD_BMQ}" -j${PARALLELISM} \
       --target ${TARGETS} -v --clean-first
 
-if [ "${FUZZER_ENABLED}" == "on" ]; then
+if [ "${FUZZER}" == "on" ]; then
     exit 0
 fi
 
