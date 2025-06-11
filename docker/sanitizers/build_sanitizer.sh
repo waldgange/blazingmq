@@ -35,7 +35,7 @@ if [[ -z "${2}" || ("${2}" != "on" && "${2}" != "off") ]]; then
 fi
 
 SANITIZER_NAME="${1}"
-FUZZER="${2}"
+FUZZER_ENABLED="${2}"
 
 # Install prerequisites
 # Set up CA certificates first before installing other dependencies
@@ -144,7 +144,7 @@ cd -
 #
 # We therefore opt to use libc++ here, just to ensure maximum flexibility.  We
 # follow build instructions from https://libcxx.llvm.org/BuildingLibcxx.html
-if [ "${FUZZER}" == "off" ]; then
+if [ "${FUZZER_ENABLED}" == "off" ]; then
     LIBCXX_SRC_PATH="${DIR_SRCS_EXT}/llvm-project/runtimes"
     LIBCXX_BUILD_PATH="${LIBCXX_SRC_PATH}/cmake.bld"
 
@@ -156,7 +156,6 @@ if [ "${FUZZER}" == "off" ]; then
             -DCMAKE_CXX_STANDARD=20 \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DLLVM_USE_SANITIZER="${LLVM_SANITIZER_NAME}" \
-            -DLLVM_USE_SANITIZE_COVERAGE="${FUZZER}" \
             "${LLVM_SPECIFIC_CMAKE_OPTIONS}"
 
     cmake --build "${LIBCXX_BUILD_PATH}" -j${PARALLELISM} --target cxx cxxabi unwind generate-cxx-headers
@@ -170,11 +169,12 @@ export DIR_SCRIPTS="${DIR_SCRIPTS}"
 
 TOOLCHAIN_PATH="${DIR_SCRIPTS}/clang-libcxx-sanitizer.cmake"
 export SANITIZER_NAME="${SANITIZER_NAME}"
-export FUZZER="${FUZZER}"
 export CC="clang"
 export CXX="clang++"
-if [ "${FUZZER}" == "off" ]; then
-    export CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES="/usr/include;/usr/include/clang/${LLVM_VERSION}/include"
+if [ "${FUZZER_ENABLED}" == "on" ]; then
+  export FUZZER="fuzzer-no-link"
+else
+  export CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES="/usr/include;/usr/include/clang/${LLVM_VERSION}/include"
 fi
 export BBS_BUILD_SYSTEM="ON"
 PATH="$PATH:$(realpath "${DIR_SRCS_EXT}"/bde-tools/bin)"
@@ -260,7 +260,8 @@ for dir in "${DIR_SRCS_EXT}"/*; do
 done
 
 # Build BlazingMQ
-if [ "${FUZZER}" == "on" ]; then
+if [ "${FUZZER_ENABLED}" == "on" ]; then
+    export FUZZER="fuzzer"
     CMAKE_OPTIONS+=(-DINSTALL_TARGETS=fuzztests);
     TARGETS="fuzztests"
 else
@@ -276,7 +277,7 @@ cmake -B "${DIR_BUILD_BMQ}" -S "${DIR_SRC_BMQ}" -G Ninja \
 cmake --build "${DIR_BUILD_BMQ}" -j${PARALLELISM} \
       --target ${TARGETS} -v --clean-first
 
-if [ "${FUZZER}" == "on" ]; then
+if [ "${FUZZER_ENABLED}" == "on" ]; then
     exit 0
 fi
 
