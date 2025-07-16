@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libbmq<span id="projectnumber">&#160;e1e12761ac381cc0cf28ffde32c90b53f479663f</span>
+   <div id="projectname">libbmq<span id="projectnumber">&#160;546fd677c4f04e66b2d5f0c09ac629362c45c60a</span>
    </div>
   </td>
  </tr>
@@ -103,10 +103,10 @@ $(document).ready(function(){initNavTree('bmqt__sessionoptions_8h.html',''); ini
 <code>#include &lt;bsl_iosfwd.h&gt;</code><br />
 <code>#include &lt;bsl_memory.h&gt;</code><br />
 <code>#include &lt;bsl_string.h&gt;</code><br />
+<code>#include &lt;bsla_annotations.h&gt;</code><br />
 <code>#include &lt;bslma_allocator.h&gt;</code><br />
 <code>#include &lt;bslma_usesbslmaallocator.h&gt;</code><br />
 <code>#include &lt;bslmf_nestedtraitdeclaration.h&gt;</code><br />
-<code>#include &lt;bsls_annotation.h&gt;</code><br />
 <code>#include &lt;bsls_assert.h&gt;</code><br />
 <code>#include &lt;bsls_timeinterval.h&gt;</code><br />
 <code>#include &lt;bsls_types.h&gt;</code><br />
@@ -144,7 +144,7 @@ Functions</h2></td></tr>
 <li><p class="startli"><em>brokerUri</em>: Address of the broker to connect to. Default is to connect to the broker on the local host on the default port (30114). The format is <code>tcp://&lt;host&gt;:port</code>. Host can be:</p><ul>
 <li>an explicit hostname or <code>localhost</code>,</li>
 <li>an IP, example 10.11.12.13, or</li>
-<li>a DNS entry. In this case, the client will resolve the list of addresses from that entry, and try to connect to one of them. When the connection with the host goes down, it will automatically immediately failover and reconnects to another entry from the address list.</li>
+<li>a DNS entry. In this case, the client will resolve the list of addresses from that entry, and try to connect to one of them. When the connection with the host goes down, it will automatically immediately failover and reconnect to another entry from the address list.</li>
 </ul>
 <p class="startli">If the environment variable <code>BMQ_BROKER_URI</code> is set, then instances of <a class="el" href="classBloombergLP_1_1bmqa_1_1Session.html">bmqa::Session</a> will ignore the <code>brokerUri</code> field from the provided <a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html">bmqt::SessionOptions</a> and use the value from this environment variable instead.</p>
 </li>
