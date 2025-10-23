@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libbmq<span id="projectnumber">&#160;b6028b29b733bc7541593d2905a5f79a9f0192fc</span>
+   <div id="projectname">libbmq<span id="projectnumber">&#160;157313364b9eb131df3022f1462834c0f609fcf3</span>
    </div>
   </td>
  </tr>
@@ -236,7 +236,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set the payload of this message to the specified <code>length</code> bytes starting at the specified <code>data</code> address. The behavior is undefined unless <code>data</code> is non-null and <code>length</code> is greater than zero. Note that payload pointed to by <code>data</code> is <em>not</em> copied right away, and should not be destroyed or modified until this message has been packed (see <code><a class="el" href="classBloombergLP_1_1bmqa_1_1MessageEventBuilder.html" title="A builder for MessageEvent objects.">bmqa::MessageEventBuilder</a></code> component level documentation for correct usage).</p>
+<p>Set the payload of this message to the specified <code>length</code> bytes starting at the specified <code>data</code> address. The behavior is undefined unless <code>data</code> is non-null and <code>0 &lt; length &lt;= INT_MAX</code>. Note that payload pointed to by <code>data</code> is <em>not</em> copied right away, and should not be destroyed or modified until this message has been packed (see <code><a class="el" href="classBloombergLP_1_1bmqa_1_1MessageEventBuilder.html" title="A builder for MessageEvent objects.">bmqa::MessageEventBuilder</a></code> component level documentation for correct usage).</p>
 <p>This method is deprecated, please use <code><a class="el" href="classBloombergLP_1_1bmqa_1_1Message.html#ac8656c868bb0c69fa910c2905a4cddcd">setDataRef()</a></code> instead. </p>
 
 <p class="reference">References <a class="el" href="classBloombergLP_1_1bmqa_1_1Message.html#ac8656c868bb0c69fa910c2905a4cddcd">setDataRef()</a>.</p>
@@ -289,7 +289,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the payload of this message to the specified <code>length</code> bytes starting at the specified <code>data</code> address. The behavior is undefined unless <code>data</code> is non-null and <code>length</code> is greater than zero. Note that payload pointed to by <code>data</code> is <em>not</em> copied right away, and should not be destroyed or modified until this message has been packed (see <code><a class="el" href="classBloombergLP_1_1bmqa_1_1MessageEventBuilder.html" title="A builder for MessageEvent objects.">bmqa::MessageEventBuilder</a></code> component level documentation for correct usage). </p>
+<p>Set the payload of this message to the specified <code>length</code> bytes starting at the specified <code>data</code> address. The behavior is undefined unless <code>data</code> is non-null and <code>0 &lt; length &lt;= INT_MAX</code>. Note that payload pointed to by <code>data</code> is <em>not</em> copied right away, and should not be destroyed or modified until this message has been packed (see <code><a class="el" href="classBloombergLP_1_1bmqa_1_1MessageEventBuilder.html" title="A builder for MessageEvent objects.">bmqa::MessageEventBuilder</a></code> component level documentation for correct usage). </p>
 
 </div>
 </div>
