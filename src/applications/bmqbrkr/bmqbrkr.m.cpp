@@ -604,6 +604,8 @@ int main(int argc, const char* argv[])
     int         port    = 0;
     bool        version = false;
 
+    bsl::cout << "Test\n";
+
     balcl::OptionInfo specTable[] = {
         {"",
          "config",
