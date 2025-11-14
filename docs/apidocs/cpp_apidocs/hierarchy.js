@@ -57,5 +57,6 @@ var hierarchy =
     [ "BloombergLP::bmqt::Uri", "classBloombergLP_1_1bmqt_1_1Uri.html", null ],
     [ "BloombergLP::bmqt::UriBuilder", "classBloombergLP_1_1bmqt_1_1UriBuilder.html", null ],
     [ "BloombergLP::bmqt::UriParser", "structBloombergLP_1_1bmqt_1_1UriParser.html", null ],
+    [ "BloombergLP::bmqt::UriParser::UriParseResult", "structBloombergLP_1_1bmqt_1_1UriParser_1_1UriParseResult.html", null ],
     [ "BloombergLP::bmqt::Version", "classBloombergLP_1_1bmqt_1_1Version.html", null ]
 ];
