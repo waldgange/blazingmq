@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libbmq<span id="projectnumber">&#160;d7beba392a50c0457c576de61d42a9b077136f4a</span>
+   <div id="projectname">libbmq<span id="projectnumber">&#160;a97704ff4ed1a36151a638222deb8640803249a2</span>
    </div>
   </td>
  </tr>
@@ -101,8 +101,8 @@ $(document).ready(function(){initNavTree('bmqt__uri_8h.html',''); initResizable(
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;ball_log.h&gt;</code><br />
 <code>#include &lt;bsl_cstddef.h&gt;</code><br />
-<code>#include &lt;bsl_iosfwd.h&gt;</code><br />
 <code>#include &lt;bsl_string.h&gt;</code><br />
+<code>#include &lt;bsla_maybeunused.h&gt;</code><br />
 <code>#include &lt;bslh_hash.h&gt;</code><br />
 <code>#include &lt;bslma_usesbslmaallocator.h&gt;</code><br />
 <code>#include &lt;bslmf_nestedtraitdeclaration.h&gt;</code><br />
@@ -166,10 +166,7 @@ URI format</h1>
 </ul>
 <h1><a class="anchor" id="bmqt_uri_ex1"></a>
 Usage Example 1</h1>
-<p>First, call the <code>initialize</code> method of the <a class="el" href="structBloombergLP_1_1bmqt_1_1UriParser.html">bmqt::UriParser</a>. This call is only needed one time; you can call it when your task starts.</p>
-<p>Note that the <code>bmq</code> library takes care of that, so users of <code>bmq</code> don't have to explicitly do it themselves.</p>
-<div class="fragment"><div class="line">bmqt::UriParser::initialize();</div>
-</div><!-- fragment --><p>Then, parse a URI string created on the stack to populate a <a class="el" href="classBloombergLP_1_1bmqt_1_1Uri.html">bmqt::Uri</a> object. The parse function takes an optional error string which is populated with a short error message if the URI is not formatted correctly.</p>
+<p>Parse a URI string created on the stack to populate a <a class="el" href="classBloombergLP_1_1bmqt_1_1Uri.html">bmqt::Uri</a> object. The parse function takes an optional error string which is populated with a short error message if the URI is not formatted correctly.</p>
 <div class="fragment"><div class="line">bsl::string input = <span class="stringliteral">&quot;bmq://my.domain/queue&quot;</span>;</div>
 <div class="line">bmqt::Uri   uri(allocator);</div>
 <div class="line">bsl::string errorDescription;</div>
@@ -194,7 +191,7 @@ Usage Example 2</h1>
 Thread Safety</h1>
 <ul>
 <li><a class="el" href="classBloombergLP_1_1bmqt_1_1UriBuilder.html">bmqt::UriBuilder</a> is NOT thread safe.</li>
-<li><a class="el" href="structBloombergLP_1_1bmqt_1_1UriParser.html">bmqt::UriParser</a> should be thread safe: the component depends on <code>bdepcre_regex</code> that is a wrapper around "pcre.h". See <a href="http://www.pcre.org/pcre.txt">http://www.pcre.org/pcre.txt</a>. </li>
+<li><a class="el" href="structBloombergLP_1_1bmqt_1_1UriParser.html">bmqt::UriParser</a> is thread safe. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
