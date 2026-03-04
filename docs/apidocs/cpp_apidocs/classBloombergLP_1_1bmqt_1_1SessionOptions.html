@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libbmq<span id="projectnumber">&#160;f448eabdc95d96246ac2da0497ff7701c9252a28</span>
+   <div id="projectname">libbmq<span id="projectnumber">&#160;52046e195260013dbf37ee636d570f340f354e4a</span>
    </div>
   </td>
  </tr>
@@ -144,6 +144,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5079adfe01673608087500302d85d701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab536e6340590b99e8c26137bb3727a5" id="r_aab536e6340590b99e8c26137bb3727a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html">SessionOptions</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#aab536e6340590b99e8c26137bb3727a5">setUserAgentPrefix</a> (bsl::string_view value)</td></tr>
 <tr class="separator:aab536e6340590b99e8c26137bb3727a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8fe1fdc0f45bc1c6eaac63525cb1d05" id="r_af8fe1fdc0f45bc1c6eaac63525cb1d05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html">SessionOptions</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#af8fe1fdc0f45bc1c6eaac63525cb1d05">setChannelWriteTimeout</a> (const bsls::TimeInterval &amp;value)</td></tr>
+<tr class="separator:af8fe1fdc0f45bc1c6eaac63525cb1d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafdced0acc315ea53c517ac036dfdeb2" id="r_aafdced0acc315ea53c517ac036dfdeb2"><td class="memItemLeft" align="right" valign="top">const bsl::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#aafdced0acc315ea53c517ac036dfdeb2">brokerUri</a> () const</td></tr>
 <tr class="memdesc:aafdced0acc315ea53c517ac036dfdeb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the broker URI.  <br /></td></tr>
 <tr class="separator:aafdced0acc315ea53c517ac036dfdeb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,6 +196,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d65ac9c6d6be72f6ec46c4e6c89df49" id="r_a8d65ac9c6d6be72f6ec46c4e6c89df49"><td class="memItemLeft" align="right" valign="top">const bsl::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#a8d65ac9c6d6be72f6ec46c4e6c89df49">userAgentPrefix</a> () const</td></tr>
 <tr class="memdesc:a8d65ac9c6d6be72f6ec46c4e6c89df49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the user agent prefix.  <br /></td></tr>
 <tr class="separator:a8d65ac9c6d6be72f6ec46c4e6c89df49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ebdbe217de05c8234e5e1802fbb743b" id="r_a4ebdbe217de05c8234e5e1802fbb743b"><td class="memItemLeft" align="right" valign="top">const bsls::TimeInterval &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#a4ebdbe217de05c8234e5e1802fbb743b">channelWriteTimeout</a> () const</td></tr>
+<tr class="memdesc:a4ebdbe217de05c8234e5e1802fbb743b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the timeout to block <code>post</code> when at high watermark.  <br /></td></tr>
+<tr class="separator:a4ebdbe217de05c8234e5e1802fbb743b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56fd74fe58ac5eba70cd2ebd3dff091e" id="r_a56fd74fe58ac5eba70cd2ebd3dff091e"><td class="memItemLeft" align="right" valign="top">bsl::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#a56fd74fe58ac5eba70cd2ebd3dff091e">print</a> (bsl::ostream &amp;stream, int level=0, int spacesPerLevel=4) const</td></tr>
 <tr class="separator:a56fd74fe58ac5eba70cd2ebd3dff091e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -207,6 +212,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:ab58cccb280d4c12151bdc1dfbc8a8559"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cc1f347fab4f8fce9b4405c84ccb9d7" id="r_a8cc1f347fab4f8fce9b4405c84ccb9d7"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#a8cc1f347fab4f8fce9b4405c84ccb9d7">k_QUEUE_OPERATION_DEFAULT_TIMEOUT</a></td></tr>
 <tr class="separator:a8cc1f347fab4f8fce9b4405c84ccb9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a926a6951e3eae92524412709f6123807" id="r_a926a6951e3eae92524412709f6123807"><td class="memItemLeft" align="right" valign="top">static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html#a926a6951e3eae92524412709f6123807">k_CHANNEL_WRITE_DEFAULT_TIMEOUT_SEC</a> = 5</td></tr>
+<tr class="separator:a926a6951e3eae92524412709f6123807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>value-semantic type for options to configure a session with a BlazingMQ broker </p>
@@ -737,6 +744,33 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="af8fe1fdc0f45bc1c6eaac63525cb1d05" name="af8fe1fdc0f45bc1c6eaac63525cb1d05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8fe1fdc0f45bc1c6eaac63525cb1d05">&#9670;&#160;</a></span>setChannelWriteTimeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classBloombergLP_1_1bmqt_1_1SessionOptions.html">SessionOptions</a> &amp; BloombergLP::bmqt::SessionOptions::setChannelWriteTimeout </td>
+          <td>(</td>
+          <td class="paramtype">const bsls::TimeInterval &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the timeout to block <code>post</code> when at high watermark. Zero means no blocking. </p>
+
+</div>
+</div>
 <a id="aafdced0acc315ea53c517ac036dfdeb2" name="aafdced0acc315ea53c517ac036dfdeb2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafdced0acc315ea53c517ac036dfdeb2">&#9670;&#160;</a></span>brokerUri()</h2>
 
@@ -1218,6 +1252,31 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a4ebdbe217de05c8234e5e1802fbb743b" name="a4ebdbe217de05c8234e5e1802fbb743b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ebdbe217de05c8234e5e1802fbb743b">&#9670;&#160;</a></span>channelWriteTimeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bsls::TimeInterval &amp; BloombergLP::bmqt::SessionOptions::channelWriteTimeout </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a56fd74fe58ac5eba70cd2ebd3dff091e" name="a56fd74fe58ac5eba70cd2ebd3dff091e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a56fd74fe58ac5eba70cd2ebd3dff091e">&#9670;&#160;</a></span>print()</h2>
 
@@ -1322,6 +1381,28 @@ Static Public Attributes</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">        5 * bdlt::TimeUnitRatio::k_SECONDS_PER_MINUTE</div>
 </div><!-- fragment --><p>The default, and minimum recommended, value for queue operations (open, configure, close). </p>
+
+</div>
+</div>
+<a id="a926a6951e3eae92524412709f6123807" name="a926a6951e3eae92524412709f6123807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a926a6951e3eae92524412709f6123807">&#9670;&#160;</a></span>k_CHANNEL_WRITE_DEFAULT_TIMEOUT_SEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BloombergLP::bmqt::SessionOptions::k_CHANNEL_WRITE_DEFAULT_TIMEOUT_SEC = 5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
