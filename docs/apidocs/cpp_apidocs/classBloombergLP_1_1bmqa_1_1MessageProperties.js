@@ -12,7 +12,7 @@ var classBloombergLP_1_1bmqa_1_1MessageProperties =
     [ "setPropertyAsInt32", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#ab327f5728910ecdd6c8bd523e4453055", null ],
     [ "setPropertyAsInt64", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#ae7a93fc3227eb9ca533c5c3a6f754db4", null ],
     [ "setPropertyAsString", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#af55ffcdfaee9ccb9e300fbcf3aa88980", null ],
-    [ "setPropertyAsBinary", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#a7068ba8bae806256dc340dff99e605a9", null ],
+    [ "setPropertyAsBinary", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#af6be318482583a6c91ef80f476f7e2da", null ],
     [ "streamIn", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#aef2e14e9819d20bbec614a597acaa430", null ],
     [ "numProperties", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#ac961ce665524adb0d29d8885451c1bfe", null ],
     [ "totalSize", "classBloombergLP_1_1bmqa_1_1MessageProperties.html#aba488eb47573415f771afb1e66a6dff5", null ],
