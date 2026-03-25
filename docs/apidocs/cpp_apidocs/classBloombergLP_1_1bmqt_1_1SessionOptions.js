@@ -1,5 +1,6 @@
 var classBloombergLP_1_1bmqt_1_1SessionOptions =
 [
+    [ "AuthnCredentialCb", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a8dc726653a5f599f9da80320ff7b8016", null ],
     [ "SessionOptions", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a255bd2874882db309fc98bdfcfa898a7", null ],
     [ "SessionOptions", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#ae9934f5717db17ab6faa6b4a292cb318", null ],
     [ "setBrokerUri", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a6d66d9b77fd96366f363c688766f6601", null ],
@@ -13,6 +14,7 @@ var classBloombergLP_1_1bmqt_1_1SessionOptions =
     [ "setOpenQueueTimeout", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a5b9bf86e49c8ed6ae8b454281f23d443", null ],
     [ "setConfigureQueueTimeout", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a406d1f9a2e777d52715e2ebd1079e41f", null ],
     [ "setCloseQueueTimeout", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a1fa26f48d062e50b6bc35f2e70ba61ad", null ],
+    [ "setAuthnCredentialCb", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a2211af2d3ffd786dd5eb0f60774f9bf9", null ],
     [ "setHostHealthMonitor", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a79a67fc682dfab108308f4dca40cc06c", null ],
     [ "setTraceOptions", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a6ee3200d8232342d13a55cf50ad3e34d", null ],
     [ "configureEventQueue", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a930ce7dc9cc2e0833d8dff527b3112fa", null ],
@@ -30,6 +32,7 @@ var classBloombergLP_1_1bmqt_1_1SessionOptions =
     [ "openQueueTimeout", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#ac35d56be5e2c239065055a961c35f55a", null ],
     [ "configureQueueTimeout", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#aae8b59b49a9f6caa2851e59f47b28445", null ],
     [ "closeQueueTimeout", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a3cc5629d0f961d16743ccb02303ffec3", null ],
+    [ "authnCredentialCb", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a3beeab27593187f7ddc6acde2166355b", null ],
     [ "hostHealthMonitor", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#a7dae3ea3f872a4051832f5c9895f80d5", null ],
     [ "traceContext", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#ad8539ecc76aa1f44d7e1ac4384bf7ff3", null ],
     [ "tracer", "classBloombergLP_1_1bmqt_1_1SessionOptions.html#ab993eccd221e00062e1571a3ae78f904", null ],
