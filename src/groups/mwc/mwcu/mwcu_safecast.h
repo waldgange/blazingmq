@@ -27,13 +27,11 @@
 //  safeCast:   convert from one numeric type to another
 //
 //@DESCRIPTION: This component provides a function, 'mwcu::SafeCast::safeCast',
-// which implements explicit type coversion in order to suppress '-Wconversion'
+// which implements explicit type conversion in order to suppress '-Wconversion'
 // warnings during the compilation.
 
 // BDE
-#include <bsl_iostream.h>
 #include <bsl_limits.h>
-#include <bsl_string.h>
 #include <bslmf_enableif.h>
 #include <bslmf_integralconstant.h>
 #include <bslmf_issame.h>
@@ -60,7 +58,7 @@ struct is_castable
     // meta-function presented below.
 };
 
-/// Explisitly convert the specified 'value' from type 'FROM' to type 'TO' to
+/// Explicitly convert the specified 'value' from type 'FROM' to type 'TO' to
 /// avoid conversion warnings.  Perform runtime checks of numeric limits to
 /// prevent value changes.  Asserts if the conversion is impossible.
 template <typename FROM, typename TO>
@@ -91,7 +89,7 @@ safeCast(FROM value)
 
 namespace SafeCast {
 
-// Defenitions of 'safeCast' with only one template parameter for user's
+// Definitions of 'safeCast' with only one template parameter for user's
 // convenience.  Only result type has to be specified.
 
 template <typename T>

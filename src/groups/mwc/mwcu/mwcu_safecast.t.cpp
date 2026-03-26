@@ -51,7 +51,7 @@ bool testFail(FROM value)
 template <typename FROM, typename TO>
 void testTypePair()
 {
-    // Prepare stack trace to distingush potential test fails
+    // Prepare stack trace to distinguish potential test fails
     mwcu::MemOutStream stackTrace(s_allocator_p);
     balst::StackTracePrintUtil::printStackTrace(stackTrace);
     stackTrace << bsl::ends;
